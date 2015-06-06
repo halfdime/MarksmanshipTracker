@@ -1,0 +1,20 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'marksmanship.html'}}
+
+{{
+    list = UL(A("Shooter Check-in", _href=URL("checkin")),
+              A("Record Scores", _href=URL("record_score")),
+              A("Input Shooter", _href=URL('manage')))
+    response.write(list)
+}}
+{{if 'message' in globals():}}
+<h3>{{=message}}</h3>
+{{elif 'content' in globals():}}
+<h4>{{=content}}</h4>
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+
+{{end}}

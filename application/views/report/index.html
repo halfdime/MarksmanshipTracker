@@ -1,0 +1,19 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'marksmanship.html'}}
+{{if 'script' in globals():}}
+{{=script}}
+{{pass}}
+{{if 'form' in globals():}}
+{{=form}}
+{{else:}}
+{{
+    list = UL(A("Individual Shooter Record", _href=URL("shooter")))
+    response.write(list)
+}}
+{{pass}}
+{{if 'content' in globals():}}
+{{=BEAUTIFY(content)}}
+{{pass}}
+{{block right_sidebar}}
+
+{{end}}

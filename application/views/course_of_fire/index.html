@@ -1,0 +1,21 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'marksmanship.html'}}
+
+{{
+    list = UL(A("Manage Courses", _href=URL('course')),
+              A("Manage Positions", _href=URL('position')),
+              A("Manage Qualifications", _href=URL("qualification")),
+              A("Manage Ratings", _href=URL('rating')))
+    response.write(list)
+}}
+{{if 'message' in globals():}}
+<h3>{{=message}}</h3>
+{{elif 'content' in globals():}}
+<h4>{{=content}}</h4>
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+
+{{end}}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{=response.title or request.application}}</title>
+    {{
+    response.files.insert(0,URL('static','css/web2py.css'))
+    response.files.insert(1,URL('static','css/marksmanship.css'))
+    }}
+    {{include 'web2py_ajax.html'}}
+</head>
+<body>
+{{quallogo = IMG(_src=URL("static", "images/quallogo.gif"), _alt="Marksmanship Program Logo")
+elements = [
+    A(quallogo, _href=URL(a="marksmanship", c="default", f="index")),
+    A("Shooter", _href=URL(c="shooter", f="index"), _class="my_button"),
+    A("Award", _href=URL(c="award", f="index"), _class="my_button"),
+    A("Course of Fire", _href=URL(c="course_of_fire", f="index"), _class="my_button"),
+    A("Reporting", _href=URL(c="report", f="index"), _class="my_button")]
+response.write(DIV(*elements, _class="menu"))}}
+<div class="content"><h1>{{=response.title or request.application}}</h1>
+{{include}}
+</div>
+<div class="flash">{{=response.flash or ''}}</div>
+</body>
+</html>
